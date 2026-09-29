@@ -1,0 +1,101 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    'Segoe UI Variable Display',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  --bg: #101418;
+  --card: #1a2027;
+  --card-border: #2a323c;
+  --text: #e8edf2;
+  --muted: #9aa7b4;
+  --accent: #4cc38a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px;
+}
+
+.app__card {
+  width: min(560px, 100%);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 36px 40px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.app__title {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.app__subtitle {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.app__facts {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.app__facts li {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.app__fact-label {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.app__facts code {
+  font-family: Consolas, 'Cascadia Code', monospace;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.app__hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+}

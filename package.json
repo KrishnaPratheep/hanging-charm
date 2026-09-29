@@ -1,0 +1,40 @@
+{
+  "name": "hangly-desktop-companion",
+  "productName": "Hangly Desktop Companion",
+  "version": "0.1.0",
+  "description": "Hangly-inspired desktop companion application",
+  "main": ".vite/build/main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron-forge start",
+    "dev": "electron-forge start",
+    "typecheck": "tsc --noEmit",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.2",
+    "@electron-forge/maker-squirrel": "^7.11.2",
+    "@electron-forge/plugin-fuses": "^7.11.2",
+    "@electron-forge/plugin-vite": "^7.11.2",
+    "@electron/fuses": "^1.8.0",
+    "@types/electron-squirrel-startup": "^1.0.2",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "electron": "44.4.5",
+    "typescript": "~5.9.3",
+    "vite": "~7.3.6"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "electron-winstaller@5.4.4": true
+  }
+}
