@@ -7,6 +7,9 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    // The Vite plugin ignores everything outside `.vite/`, so runtime assets
+    // must ship via extraResource (copied to <app>/resources/ at package time).
+    extraResource: ['assets'],
     // Windows packaging (Squirrel) is configured below. macOS support (dmg/zip)
     // can be added here when macOS builds come online.
   },

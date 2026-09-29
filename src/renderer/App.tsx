@@ -6,36 +6,49 @@ export default function App() {
 
   useEffect(() => {
     setVersion(window.hangly.app.getVersion());
+
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Escape') {
+        window.hangly.overlay.hideOverlay();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
   return (
-    <main className="app">
-      <div className="app__card">
-        <h1 className="app__title">Hangly Desktop Companion</h1>
-        <p className="app__subtitle">
-          Foundation build &mdash; Electron + React + TypeScript + Vite.
+    <main className="overlay">
+      {/* Test charm: a colored circle hanging near the top of the overlay.
+          Physics and dragging arrive in a later milestone. */}
+      <div className="charm" aria-hidden="true" />
+
+      <section className="overlay__panel">
+        <h1 className="overlay__title">Hangly Desktop Companion</h1>
+        <p className="overlay__subtitle">
+          Overlay milestone &mdash; frameless, transparent, always on top.
         </p>
-        <ul className="app__facts">
+        <ul className="overlay__facts">
           <li>
-            <span className="app__fact-label">Renderer</span>
-            <span>React running in a sandboxed, context-isolated window</span>
+            <span className="overlay__fact-label">Window</span>
+            <span>Frameless &middot; transparent &middot; always-on-top</span>
           </li>
           <li>
-            <span className="app__fact-label">Preload</span>
+            <span className="overlay__fact-label">Bridge</span>
             <span>
-              Minimal bridge exposed as <code>window.hangly</code>
+              <code>window.hangly</code> (contextIsolation + sandbox)
             </span>
           </li>
           <li>
-            <span className="app__fact-label">Version</span>
+            <span className="overlay__fact-label">Version</span>
             <span>{version || '…'}</span>
           </li>
         </ul>
-        <p className="app__hint">
-          Features arrive later &mdash; this screen just proves the pipeline
-          works end to end.
+        <p className="overlay__hint">
+          <kbd>Esc</kbd> hides the overlay &middot;{' '}
+          <kbd>Ctrl+Shift+H</kbd> toggles it &middot;{' '}
+          <kbd>Ctrl+Shift+Q</kbd> quits &middot; tray icon has a menu too.
         </p>
-      </div>
+      </section>
     </main>
   );
 }
