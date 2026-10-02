@@ -27,4 +27,9 @@ const cspPlugin = (): Plugin => ({
 // https://vitejs.dev/config
 export default defineConfig({
   plugins: [react(), cspPlugin()],
+  build: {
+    // Inline small images as data: URIs: charm textures ride inside the
+    // renderer bundle (packed in the asar) and satisfy img-src 'self' data:.
+    assetsInlineLimit: 16384,
+  },
 });

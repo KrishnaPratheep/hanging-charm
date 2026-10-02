@@ -1,5 +1,5 @@
-/* Overlay milestone: the page background must be fully transparent so only
-   the charm and panel pixels are visible over the desktop. */
+/* The page background must be fully transparent so only the charm, rope and
+   hint panel pixels are visible over the desktop. */
 
 :root {
   color-scheme: dark;
@@ -45,101 +45,55 @@ body {
   height: 100%;
 }
 
-/* Test charm: a colored circle hanging near the top of the overlay window.
-   Static for now — rope physics and dragging come in a later milestone. */
-.charm {
+/* Host for the PixiJS canvas: the full overlay, behind the hint panel. */
+.charm-stage {
   position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    #7fe0b6 0%,
-    var(--accent) 55%,
-    #2f9d6c 100%
-  );
-  box-shadow:
-    0 4px 18px rgba(76, 195, 138, 0.45),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.25);
+  inset: 0;
 }
 
-/* A short tether line above the charm, hinting at the eventual rope. */
-.charm::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  width: 2px;
-  height: 26px;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--accent));
+.charm-stage canvas {
+  display: block;
 }
 
 .overlay__panel {
   position: absolute;
   left: 50%;
-  bottom: 16px;
+  bottom: 14px;
+  /* A decorative HUD must never swallow pointer events meant for the charm. */
+  pointer-events: none;
   transform: translateX(-50%);
   width: calc(100% - 32px);
   background: var(--panel);
   border: 1px solid var(--panel-border);
-  border-radius: 12px;
-  padding: 18px 22px;
+  border-radius: 10px;
+  padding: 10px 14px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
+.overlay__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .overlay__title {
-  margin: 0 0 4px;
-  font-size: 19px;
+  margin: 0;
+  font-size: 13.5px;
   font-weight: 650;
   letter-spacing: -0.01em;
 }
 
-.overlay__subtitle {
-  margin: 0 0 14px;
+.overlay__version {
   color: var(--muted);
-  font-size: 12.5px;
-}
-
-.overlay__facts {
-  list-style: none;
-  margin: 0 0 14px;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.overlay__facts li {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 10px;
-  align-items: baseline;
-  font-size: 12.5px;
-}
-
-.overlay__fact-label {
-  color: var(--accent);
-  font-weight: 600;
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.overlay__facts code {
-  font-family: Consolas, 'Cascadia Code', monospace;
-  font-size: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 1px 5px;
-  border-radius: 4px;
 }
 
 .overlay__hint {
-  margin: 0;
+  margin: 4px 0 0;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: 11px;
+  line-height: 1.45;
 }
 
 .overlay__hint kbd {

@@ -15,7 +15,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "baseUrl": "."
   },
   "include": ["src", "forge.config.ts", "forge.env.d.ts", "vite.*.config.ts"]

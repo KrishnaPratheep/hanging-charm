@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type {} from '../preload';
+import CharmSimulation from './CharmSimulation';
 
 export default function App() {
   const [version, setVersion] = useState<string>('');
@@ -18,35 +19,17 @@ export default function App() {
 
   return (
     <main className="overlay">
-      {/* Test charm: a colored circle hanging near the top of the overlay.
-          Physics and dragging arrive in a later milestone. */}
-      <div className="charm" aria-hidden="true" />
+      {/* The hanging charm: Matter.js physics drawn by PixiJS. */}
+      <CharmSimulation />
 
       <section className="overlay__panel">
-        <h1 className="overlay__title">Hangly Desktop Companion</h1>
-        <p className="overlay__subtitle">
-          Overlay milestone &mdash; frameless, transparent, always on top.
-        </p>
-        <ul className="overlay__facts">
-          <li>
-            <span className="overlay__fact-label">Window</span>
-            <span>Frameless &middot; transparent &middot; always-on-top</span>
-          </li>
-          <li>
-            <span className="overlay__fact-label">Bridge</span>
-            <span>
-              <code>window.hangly</code> (contextIsolation + sandbox)
-            </span>
-          </li>
-          <li>
-            <span className="overlay__fact-label">Version</span>
-            <span>{version || '…'}</span>
-          </li>
-        </ul>
+        <div className="overlay__header">
+          <h1 className="overlay__title">Hangly Desktop Companion</h1>
+          <span className="overlay__version">v{version || '…'}</span>
+        </div>
         <p className="overlay__hint">
-          <kbd>Esc</kbd> hides the overlay &middot;{' '}
-          <kbd>Ctrl+Shift+H</kbd> toggles it &middot;{' '}
-          <kbd>Ctrl+Shift+Q</kbd> quits &middot; tray icon has a menu too.
+          Drag the charm &middot; Matter.js rope &middot; PixiJS rendering &mdash; <kbd>Esc</kbd> hides
+          &middot; <kbd>Ctrl+Shift+H</kbd> toggles &middot; <kbd>Ctrl+Shift+Q</kbd> quits
         </p>
       </section>
     </main>

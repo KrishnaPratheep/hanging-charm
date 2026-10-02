@@ -1,3 +1,7 @@
+// PixiJS uses eval-based code paths for performance by default. This module
+// swaps them for CSP-safe polyfills and MUST be imported before Pixi
+// initializes — our CSP (strict in production) blocks unsafe-eval.
+import 'pixi.js/unsafe-eval';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
